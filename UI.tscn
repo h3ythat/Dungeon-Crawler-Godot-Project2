@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2roflkx7wabn"]
+
+[ext_resource type="Texture2D" uid="uid://1n1juem4knu7" path="res://2D Pixel Dungeon Asset Pack/heart.png" id="1_b3bc3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health Container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 837.99994
+offset_top = 470.0
+offset_right = 837.99994
+offset_bottom = 470.0
+scale = Vector2(0.4358333, 0.4358333)
+pivot_offset = Vector2(19, 19)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Health Container"]
+texture_filter = 1
+position = Vector2(-1737.1165, -911.1394)
+scale = Vector2(0.6000001, 0.6000001)
+texture = ExtResource("1_b3bc3")
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Health Container"]
+layout_mode = 0
+offset_left = -2093.0
+offset_top = -1028.0
+offset_right = -2013.0
+offset_bottom = -948.0
+scale = Vector2(52.471737, 26.809359)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Health Container"]
+texture_filter = 1
+position = Vector2(-1464.8164, -911.1394)
+scale = Vector2(0.6000001, 0.6000001)
+texture = ExtResource("1_b3bc3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/Health Container"]
+texture_filter = 1
+position = Vector2(-1198.1163, -911.1394)
+scale = Vector2(0.6000001, 0.6000001)
+texture = ExtResource("1_b3bc3")

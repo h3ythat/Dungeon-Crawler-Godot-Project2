@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://txi1f5gyipgi"]
+
+[ext_resource type="Script" uid="uid://1ymkb74kmv1e" path="res://particles.gd" id="1_xnif8"]
+
+[sub_resource type="Gradient" id="Gradient_d8etm"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="particles" type="Node2D"]
+script = ExtResource("1_xnif8")
+
+[node name="Line1" type="Line2D" parent="."]
+scale = Vector2(0.9999998, 0.9999998)
+gradient = SubResource("Gradient_d8etm")
+joint_mode = 2
+
+[node name="Line2" type="Line2D" parent="."]
+scale = Vector2(0.9999998, 0.9999998)
+gradient = SubResource("Gradient_d8etm")
+joint_mode = 2
