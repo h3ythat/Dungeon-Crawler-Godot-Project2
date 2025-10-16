@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://txi1f5gyipgi"]
+[gd_scene load_steps=5 format=3 uid="uid://txi1f5gyipgi"]
 
 [ext_resource type="Script" uid="uid://1ymkb74kmv1e" path="res://particles.gd" id="1_xnif8"]
-
-[sub_resource type="Gradient" id="Gradient_d8etm"]
-offsets = PackedFloat32Array(0.30821916, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+[ext_resource type="Curve" uid="uid://b24tmog2s8jp3" path="res://weapon_curve.tres" id="2_1nvrg"]
+[ext_resource type="Texture2D" uid="uid://dtrm166xhy12s" path="res://image-removebg-preview (12).png" id="3_i1ypt"]
+[ext_resource type="Gradient" uid="uid://c5oj3243ynl0c" path="res://red_grad.tres" id="5_0756t"]
 
 [node name="particles" type="Node2D"]
 script = ExtResource("1_xnif8")
 
 [node name="Line1" type="Line2D" parent="."]
 scale = Vector2(0.9999998, 0.9999998)
-gradient = SubResource("Gradient_d8etm")
+width = 5.0
+width_curve = ExtResource("2_1nvrg")
+gradient = ExtResource("5_0756t")
+texture = ExtResource("3_i1ypt")
+texture_mode = 1
 joint_mode = 2
 
 [node name="Line2" type="Line2D" parent="."]
 visible = false
 scale = Vector2(0.9999998, 0.9999998)
-gradient = SubResource("Gradient_d8etm")
+gradient = ExtResource("5_0756t")
 joint_mode = 2

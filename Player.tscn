@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://l4mo8lp0e35"]
+[gd_scene load_steps=10 format=3 uid="uid://l4mo8lp0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://sword_script.gd" id="2_dtqjt"]
 [ext_resource type="Script" uid="uid://faorlaxwnvpd" path="res://playermovement.gd" id="2_kpjcp"]
+[ext_resource type="Material" uid="uid://bgi8nw33o2qvc" path="res://weapon_charged_shader.tres" id="3_5ncpa"]
 [ext_resource type="Texture2D" uid="uid://v70g1qkyq3yb" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="3_e80uo"]
 [ext_resource type="Texture2D" uid="uid://d4e46teakuer6" path="res://2D Pixel Dungeon Asset Pack/character and tileset/pngtree-black-gradient-radial-gradient-png-image_2274808.jpg" id="4_e80uo"]
 [ext_resource type="PackedScene" uid="uid://b2roflkx7wabn" path="res://UI.tscn" id="5_cxr5p"]
-[ext_resource type="Texture2D" uid="uid://c2ufaj6lqsgvq" path="res://Dungeon-Crawler-Godot-Project/File.png" id="6_tdg3f"]
+[ext_resource type="Texture2D" uid="uid://c2ufaj6lqsgvq" path="res://File.png" id="6_tdg3f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
@@ -28,8 +29,9 @@ rotation = 0.07194486
 [node name="Particle point 2" type="Node2D" parent="CharacterBody2D/Node2D"]
 position = Vector2(290.00003, 0)
 
-[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D/Node2D"]
+[node name="Sword" type="Sprite2D" parent="CharacterBody2D/Node2D"]
 texture_filter = 1
+material = ExtResource("3_5ncpa")
 position = Vector2(1.2290498, 0.65643084)
 rotation = 2.3661952
 scale = Vector2(6.047713, 6.047713)

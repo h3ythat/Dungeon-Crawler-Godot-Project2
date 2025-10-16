@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bgi8nw33o2qvc"]
+
+[ext_resource type="Shader" uid="uid://cc8nbxa4w4cpm" path="res://sword_charged.gdshader" id="1_pdktd"]
+
+[resource]
+shader = ExtResource("1_pdktd")
+shader_parameter/progress = 0.10000000475
+shader_parameter/range = 0.2
+shader_parameter/blend_strength = 0.0
