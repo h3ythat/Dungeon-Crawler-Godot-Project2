@@ -12,6 +12,7 @@ signal SLASH
 signal done_slash
 signal attack_not_detected
 signal attack_detected
+signal slash_sfx_sig
 
 @onready var point_1: Node2D = $"Particle point 1"
 @onready var point_2: Node2D = $"Particle point 2"
@@ -40,9 +41,12 @@ func _process(delta):
 			print(new_rotat)
 		if(current_rotat > new_rotat):
 			rotate(-1*rotation_speed)
+		if(rotation_speed > 0.05):
+			slash_sfx_sig.emit()
 		if(current_rotat < new_rotat):
+			done_slash.emit(rotation_speed)
 			rotation_speed = 0.05
-			done_slash.emit()
+			
 			charged_weapon = false
 	
 	if(Input.is_action_just_pressed("rotate_sword_right")):
@@ -58,18 +62,23 @@ func _process(delta):
 			SLASH.emit()
 			print(rotat)
 			print(new_rotat)
+		if(rotation_speed > 0.05):
+			slash_sfx_sig.emit()
 		if(current_rotat < new_rotat):
 			rotate(rotation_speed)
 		if(current_rotat >= new_rotat):
+			done_slash.emit(rotation_speed)
 			rotation_speed = 0.05
-			done_slash.emit()
+			
 			charged_weapon = false
 	if(Input.is_action_just_released("rotate_sword_left") || Input.is_action_just_released("rotate_sword_right")):
+		done_slash.emit(rotation_speed)
 		rotation_speed = 0.05
-		done_slash.emit()
+		
 		charged_weapon = false
 	if(Input.is_action_just_pressed("rotate_sword_left") || Input.is_action_just_pressed("rotate_sword_right")):
-		attack_detected.emit()
+		attack_detected.emit(rotation_speed)
+		
 	if(Input.is_action_pressed("rotate_sword_left") || Input.is_action_pressed("rotate_sword_right")):
 		line1pos.emit(point_1.global_position, current_rotat)
 		line2pos.emit(point_2.global_position, current_rotat)
@@ -92,7 +101,7 @@ func _process(delta):
 				if($Sword.material.get_shader_parameter("blend_strength") >= 0):
 					shad.set_shader_parameter("blend_strength", shad.get_shader_parameter("blend_strength")-0.01)
 				else:
-					shad.set_shader_parameter("blend_strength", -0.1)
+					
 					await get_tree().create_timer(.1).timeout
 					shad.set_shader_parameter("blend_strength", 0)
 func sword_charged_shader():

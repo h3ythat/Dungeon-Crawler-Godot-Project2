@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr33mi5ekcgu"]
+
+[ext_resource type="Texture2D" uid="uid://rwx1sgdk6j4o" path="res://evil.png" id="1_7k104"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 64.070274
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("1_7k104")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_4gyqm")
+debug_color = Color(0.84705883, 0.5529412, 1, 0.16078432)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_4gyqm")
+debug_color = Color(0.52156866, 0.90588236, 1, 0)

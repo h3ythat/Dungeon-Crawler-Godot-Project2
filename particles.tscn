@@ -22,3 +22,5 @@ visible = false
 scale = Vector2(0.9999998, 0.9999998)
 gradient = ExtResource("5_0756t")
 joint_mode = 2
+
+[node name="sword_sfx" type="AudioStreamPlayer2D" parent="."]

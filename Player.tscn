@@ -1,13 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://l4mo8lp0e35"]
+[gd_scene load_steps=14 format=3 uid="uid://l4mo8lp0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://sword_script.gd" id="2_dtqjt"]
+[ext_resource type="Texture2D" uid="uid://2pxs3vmxsea3" path="res://GUI Sprite Sheet/sprites.png" id="2_hp6x6"]
 [ext_resource type="Script" uid="uid://faorlaxwnvpd" path="res://playermovement.gd" id="2_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://djb06fkch06wx" path="res://energy icon.png" id="3_3tkgg"]
 [ext_resource type="Material" uid="uid://bgi8nw33o2qvc" path="res://weapon_charged_shader.tres" id="3_5ncpa"]
 [ext_resource type="Texture2D" uid="uid://v70g1qkyq3yb" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="3_e80uo"]
 [ext_resource type="Texture2D" uid="uid://d4e46teakuer6" path="res://2D Pixel Dungeon Asset Pack/character and tileset/pngtree-black-gradient-radial-gradient-png-image_2274808.jpg" id="4_e80uo"]
 [ext_resource type="PackedScene" uid="uid://b2roflkx7wabn" path="res://UI.tscn" id="5_cxr5p"]
 [ext_resource type="Texture2D" uid="uid://c2ufaj6lqsgvq" path="res://File.png" id="6_tdg3f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]
+atlas = ExtResource("2_hp6x6")
+region = Rect2(622.909, 138.05963, 275.1214, 55.912323)
+margin = Rect2(-5, -5, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oudfo"]
+atlas = ExtResource("2_hp6x6")
+region = Rect2(623.7801, 288.44934, 267.0766, 49.770172)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
@@ -17,6 +28,33 @@ radius = 58.76
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("2_kpjcp")
+
+[node name="Control" type="Control" parent="CharacterBody2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -107.49998
+offset_right = 40.0
+offset_bottom = -67.49998
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D/Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -237.5
+offset_top = -42.500015
+offset_right = 37.5
+offset_bottom = 12.499985
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(344.99997, 72.49997)
+min_value = -20.0
+value = 100.0
+texture_over = SubResource("AtlasTexture_l6ohk")
+texture_progress = SubResource("AtlasTexture_oudfo")
+tint_progress = Color(0.11203602, 0.6644897, 0.7425081, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Control/TextureProgressBar"]
+texture_filter = 1
+position = Vector2(-19.99997, 22.500017)
+texture = ExtResource("3_3tkgg")
 
 [node name="Node2D" type="Node2D" parent="CharacterBody2D"]
 scale = Vector2(0.99999994, 0.99999994)
@@ -71,3 +109,10 @@ zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Control" parent="CharacterBody2D/Camera2D" instance=ExtResource("5_cxr5p")]
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(0, 204.99998)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="CharacterBody2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
