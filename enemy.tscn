@@ -1,24 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr33mi5ekcgu"]
+[gd_scene load_steps=6 format=3 uid="uid://dr33mi5ekcgu"]
 
+[ext_resource type="Script" uid="uid://c52fhxbftll46" path="res://Enemy_Handler.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://rwx1sgdk6j4o" path="res://evil.png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://bfyblp07xtkvk" path="res://enemy_movement.gd" id="2_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
+size = Vector2(130, 130)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 64.070274
 
-[node name="Node2D" type="Node2D"]
+[node name="Enemy" type="Node2D" groups=["EnemyHandler"]]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_4gyqm")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Enemy"]]
+collision_layer = 12
+script = ExtResource("2_qi2p4")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 texture = ExtResource("1_7k104")
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
-shape = SubResource("CircleShape2D_4gyqm")
+position = Vector2(1.1175869e-05, 1.430511e-05)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_7k104")
 debug_color = Color(0.84705883, 0.5529412, 1, 0.16078432)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Walls Collision" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_4gyqm")
 debug_color = Color(0.52156866, 0.90588236, 1, 0)
+
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_body_entered"]

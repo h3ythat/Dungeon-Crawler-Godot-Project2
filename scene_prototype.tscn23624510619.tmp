@@ -307,7 +307,7 @@ blend_mode = 1
 position = Vector2(329, -179)
 
 [node name="enemySpawner" parent="." node_paths=PackedStringArray("spawnPositions") instance=ExtResource("6_ko63k")]
-spawnPositions = [NodePath("../Spawn_Positions/SpawnPos1"), NodePath("../Spawn_Positions/SpawnPos2"), NodePath("../Spawn_Positions/SpawnPos3"), NodePath("../Spawn_Positions/SpawnPos4"), NodePath("../Spawn_Positions/SpawnPos5")]
+spawnPositions = [null]
 
 [node name="Spawn_Positions" type="Node2D" parent="."]
 

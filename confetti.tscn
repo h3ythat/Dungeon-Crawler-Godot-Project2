@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://do0ami1xhsfou"]
+
+[ext_resource type="Script" uid="uid://dkelm8wefbpr8" path="res://confetti.gd" id="1_0lbn0"]
+[ext_resource type="AudioStream" uid="uid://bu8cujb71xoyh" path="res://SFX/Enemy/pop.mp3" id="2_xnakt"]
+
+[sub_resource type="Curve" id="Curve_sudau"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.06741583), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0lbn0"]
+curve = SubResource("Curve_sudau")
+
+[sub_resource type="Curve" id="Curve_xnakt"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ilyld"]
+curve = SubResource("Curve_xnakt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smimb"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 10)
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_ilyld")
+velocity_pivot = Vector3(10, 10, 10)
+direction = Vector3(10, 0, 10)
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 100.0
+angular_velocity_min = -592.94
+angular_velocity_max = 719.99994
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 9.999997
+linear_accel_max = 99.99999
+radial_accel_min = 34.109997
+radial_accel_max = 99.99999
+scale_max = 3.0
+color = Color(0.32156864, 1, 0.92941177, 1)
+alpha_curve = SubResource("CurveTexture_0lbn0")
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+turbulence_noise_speed_random = 2.7
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 100
+sub_emitter = NodePath("GPUParticles2D")
+lifetime = 0.85
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_smimb")
+script = ExtResource("1_0lbn0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.85
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 4.25
+process_material = SubResource("ParticleProcessMaterial_smimb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xnakt")
+volume_db = 20.0
+pitch_scale = 0.88
+autoplay = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

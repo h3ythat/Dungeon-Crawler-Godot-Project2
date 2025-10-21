@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://l4mo8lp0e35"]
+[gd_scene load_steps=17 format=3 uid="uid://l4mo8lp0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://sword_script.gd" id="2_dtqjt"]
@@ -20,13 +20,23 @@ margin = Rect2(-5, -5, 0, 0)
 atlas = ExtResource("2_hp6x6")
 region = Rect2(623.7801, 288.44934, 267.0766, 49.770172)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp6x6"]
+size = Vector2(195, 20.477327)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tkgg"]
+size = Vector2(194.99619, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6ohk"]
+size = Vector2(76.45447, 34.983604)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
 
 [node name="Player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.4, 0.4)
+collision_layer = 3
 script = ExtResource("2_kpjcp")
 
 [node name="Control" type="Control" parent="CharacterBody2D"]
@@ -78,6 +88,36 @@ offset = Vector2(-23.843018, -23.218842)
 region_enabled = true
 region_rect = Rect2(-0.021188736, 96.01412, 32.023567, 32.02227)
 
+[node name="Left" type="Area2D" parent="CharacterBody2D/Node2D"]
+collision_layer = 12
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Node2D/Left"]
+position = Vector2(220.00002, -10.000001)
+shape = SubResource("RectangleShape2D_hp6x6")
+
+[node name="Right" type="Area2D" parent="CharacterBody2D/Node2D"]
+position = Vector2(2.7939677e-09, 20.000002)
+rotation = 0.006281726
+collision_layer = 12
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Node2D/Right"]
+position = Vector2(219.93286, -11.381776)
+shape = SubResource("RectangleShape2D_3tkgg")
+
+[node name="Top_Jab" type="Area2D" parent="CharacterBody2D/Node2D"]
+position = Vector2(-2.7939677e-09, 20.000002)
+rotation = 0.006281726
+collision_layer = 12
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Node2D/Top_Jab"]
+position = Vector2(321.11804, -22.033302)
+rotation = -3.1415925
+scale = Vector2(0.09809591, -1)
+shape = SubResource("RectangleShape2D_l6ohk")
+
 [node name="Player" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("1_xhfnw")
@@ -98,7 +138,7 @@ region_enabled = true
 region_rect = Rect2(14.72641, 146.99367, 8.618118, 12.92717)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/Torch"]
-position = Vector2(-0.42500818, -0.8060688)
+position = Vector2(-0.9936513, -0.71227694)
 color = Color(1, 0.58431375, 0.3764706, 1)
 texture = ExtResource("4_e80uo")
 texture_scale = 0.4
@@ -116,3 +156,7 @@ target_position = Vector2(0, 204.99998)
 [node name="AudioListener2D" type="AudioListener2D" parent="CharacterBody2D"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+
+[connection signal="body_entered" from="CharacterBody2D/Node2D/Left" to="CharacterBody2D/Node2D" method="_on_left_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/Node2D/Right" to="CharacterBody2D/Node2D" method="_on_right_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/Node2D/Top_Jab" to="CharacterBody2D/Node2D" method="_on_top_jab_body_entered"]

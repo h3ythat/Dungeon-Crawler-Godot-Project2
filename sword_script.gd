@@ -111,3 +111,26 @@ func sword_decharged():
 	pass
 	
 	
+
+
+	
+
+
+func _on_left_body_entered(body: Node):
+	if(body.is_in_group("Enemy")):
+		var current_enemy = body.get_parent()
+		print("Attack commenced")
+		var dealt_damage = rotation_speed * 100
+		if(charged_weapon == false):
+			current_enemy.take_damage(dealt_damage)
+			current_enemy.take_knockback(rotation_speed, get_parent().velocity, get_parent().global_position)
+		if(charged_weapon == true):
+			current_enemy.take_damage(dealt_damage+20)
+
+
+func _on_right_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_top_jab_body_entered(body):
+	pass # Replace with function body.
