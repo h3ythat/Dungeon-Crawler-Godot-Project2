@@ -117,15 +117,18 @@ func sword_decharged():
 
 
 func _on_left_body_entered(body: Node):
-	if(body.is_in_group("Enemy")):
+	if(body.is_in_group("Enemy") && rotation_speed > 0.05):
+		$LeftCast/Node2D.position = $LeftCast.target_position
+		print("TEST")
 		var current_enemy = body.get_parent()
 		print("Attack commenced")
 		var dealt_damage = rotation_speed * 100
 		if(charged_weapon == false):
 			current_enemy.take_damage(dealt_damage)
-			current_enemy.take_knockback(rotation_speed, get_parent().velocity, get_parent().global_position)
+			current_enemy.take_knockback(rotat, get_parent().velocity, get_parent().global_position, 0.12)
 		if(charged_weapon == true):
 			current_enemy.take_damage(dealt_damage+20)
+			current_enemy.take_knockback(rotat, get_parent().velocity, get_parent().global_position, 0.1)
 
 
 func _on_right_body_entered(body):
