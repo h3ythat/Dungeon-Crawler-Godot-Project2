@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn704rwawcmft"]
+
+[ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_4ufab"]
+[ext_resource type="Script" uid="uid://dnnftpoi3kdnm" path="res://enemy_types/rigid_body_2d.gd" id="2_o4aam"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ufab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4aam"]
+size = Vector2(18, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgmqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckl71"]
+size = Vector2(276, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_4ufab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_o4aam")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(2, 72)
+collision_layer = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.16222572, 0.16222572)
+texture = ExtResource("1_4ufab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_lgmqu")
+debug_color = Color(0.85751057, 0.00073794066, 0.8832251, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." node_paths=PackedStringArray("current_joint")]
+position = Vector2(2, 72)
+collision_layer = 0
+script = ExtResource("2_o4aam")
+current_joint = NodePath("../PinJoint2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_lgmqu")
+debug_color = Color(0.85751057, 0.00073794066, 0.8832251, 0.41960785)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-33, 176)
+physics_material_override = SubResource("PhysicsMaterial_4ufab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(38, 6)
+shape = SubResource("RectangleShape2D_ckl71")

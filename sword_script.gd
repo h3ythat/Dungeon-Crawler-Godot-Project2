@@ -14,6 +14,8 @@ signal attack_not_detected
 signal attack_detected
 signal slash_sfx_sig
 
+
+var slash_sound_effect = preload("res://slash_audio.tscn")
 @onready var point_1: Node2D = $"Particle point 1"
 @onready var point_2: Node2D = $"Particle point 2"
 @onready var Line1: Line2D = $"../Line1"
@@ -122,6 +124,7 @@ func _on_left_body_entered(body: Node):
 		print("TEST")
 		var current_enemy = body.get_parent()
 		print("Attack commenced")
+		add_child(slash_sound_effect.instantiate())
 		var dealt_damage = rotation_speed * 100
 		if(charged_weapon == false):
 			current_enemy.take_damage(dealt_damage)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvt582kx75y2d"]
+
+[ext_resource type="AudioStream" uid="uid://b48qrmd7b5vi5" path="res://SFX/Sword/quick_slash/quick1.mp3" id="1_ck1ld"]
+[ext_resource type="Script" uid="uid://cpwua1rkokndx" path="res://sound_effect.gd" id="2_7k5ir"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ck1ld")
+autoplay = true
+script = ExtResource("2_7k5ir")

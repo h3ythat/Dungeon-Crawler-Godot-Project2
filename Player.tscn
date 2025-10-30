@@ -21,7 +21,7 @@ atlas = ExtResource("2_hp6x6")
 region = Rect2(623.7801, 288.44934, 267.0766, 49.770172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp6x6"]
-size = Vector2(195, 35.238667)
+size = Vector2(255, 35.238667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
@@ -31,6 +31,7 @@ radius = 58.76
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.4, 0.4)
 collision_layer = 3
+motion_mode = 1
 script = ExtResource("2_kpjcp")
 
 [node name="Control" type="Control" parent="CharacterBody2D"]
@@ -65,8 +66,8 @@ scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("2_dtqjt")
 
 [node name="Particle point 1" type="Node2D" parent="CharacterBody2D/Node2D"]
-position = Vector2(282.50003, 2.5000002)
-rotation = 0.07194486
+position = Vector2(207.5, -2.3841858e-06)
+rotation = 0.046902962
 
 [node name="Particle point 2" type="Node2D" parent="CharacterBody2D/Node2D"]
 position = Vector2(290.00003, 0)
@@ -87,7 +88,7 @@ collision_layer = 12
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Node2D/Left"]
-position = Vector2(220.00002, -2.619331)
+position = Vector2(190.00002, -2.619331)
 shape = SubResource("RectangleShape2D_hp6x6")
 
 [node name="LeftCast" type="RayCast2D" parent="CharacterBody2D/Node2D"]
