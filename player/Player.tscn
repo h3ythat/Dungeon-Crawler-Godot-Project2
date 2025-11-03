@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://l4mo8lp0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_xhfnw"]
-[ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://sword_script.gd" id="2_dtqjt"]
+[ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://player/player_scripts/sword_script.gd" id="2_dtqjt"]
 [ext_resource type="Texture2D" uid="uid://2pxs3vmxsea3" path="res://GUI Sprite Sheet/sprites.png" id="2_hp6x6"]
-[ext_resource type="Script" uid="uid://faorlaxwnvpd" path="res://playermovement.gd" id="2_kpjcp"]
+[ext_resource type="Script" uid="uid://faorlaxwnvpd" path="res://player/player_scripts/playermovement.gd" id="2_kpjcp"]
 [ext_resource type="Texture2D" uid="uid://djb06fkch06wx" path="res://energy icon.png" id="3_3tkgg"]
 [ext_resource type="Material" uid="uid://bgi8nw33o2qvc" path="res://weapon_charged_shader.tres" id="3_5ncpa"]
 [ext_resource type="Texture2D" uid="uid://v70g1qkyq3yb" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="3_e80uo"]
 [ext_resource type="Texture2D" uid="uid://d4e46teakuer6" path="res://2D Pixel Dungeon Asset Pack/character and tileset/pngtree-black-gradient-radial-gradient-png-image_2274808.jpg" id="4_e80uo"]
-[ext_resource type="PackedScene" uid="uid://b2roflkx7wabn" path="res://UI.tscn" id="5_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://b2roflkx7wabn" path="res://player/UI.tscn" id="5_cxr5p"]
 [ext_resource type="Texture2D" uid="uid://c2ufaj6lqsgvq" path="res://File.png" id="6_tdg3f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]

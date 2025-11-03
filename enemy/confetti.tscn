@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://do0ami1xhsfou"]
 
-[ext_resource type="Script" uid="uid://dkelm8wefbpr8" path="res://confetti.gd" id="1_0lbn0"]
+[ext_resource type="Script" uid="uid://dkelm8wefbpr8" path="res://enemy/scripts/confetti.gd" id="1_0lbn0"]
 [ext_resource type="AudioStream" uid="uid://bu8cujb71xoyh" path="res://SFX/Enemy/pop.mp3" id="2_xnakt"]
 
 [sub_resource type="Curve" id="Curve_sudau"]

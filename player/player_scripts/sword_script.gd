@@ -15,11 +15,10 @@ signal attack_detected
 signal slash_sfx_sig
 
 
-var slash_sound_effect = preload("res://slash_audio.tscn")
+var slash_sound_effect = preload("res://player/slash_audio.tscn")
 @onready var point_1: Node2D = $"Particle point 1"
 @onready var point_2: Node2D = $"Particle point 2"
-@onready var Line1: Line2D = $"../Line1"
-@onready var Line2: Line2D = $"../Line2"
+
 @onready var particle_handler = $"../../../particles"
 
 # Called when the node enters the scene tree for the first time.
@@ -83,7 +82,7 @@ func _process(delta):
 		
 	if(Input.is_action_pressed("rotate_sword_left") || Input.is_action_pressed("rotate_sword_right")):
 		line1pos.emit(point_1.global_position, current_rotat)
-		line2pos.emit(point_2.global_position, current_rotat)
+		#zzline2pos.emit(point_2.global_position, current_rotat)
 	if(!Input.is_action_pressed("rotate_sword_left") && !Input.is_action_pressed("rotate_sword_right")):
 		attack_not_detected.emit()
 		#print(Line1.points.size())

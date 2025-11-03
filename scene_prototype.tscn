@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://657vjq5n6pce" path="res://2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="1_cbyl2"]
 [ext_resource type="Texture2D" uid="uid://v70g1qkyq3yb" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_stwcs"]
-[ext_resource type="PackedScene" uid="uid://l4mo8lp0e35" path="res://Player.tscn" id="3_qmfbw"]
-[ext_resource type="PackedScene" uid="uid://txi1f5gyipgi" path="res://particles.tscn" id="4_stwcs"]
-[ext_resource type="PackedScene" uid="uid://dr33mi5ekcgu" path="res://enemy.tscn" id="5_qmfbw"]
-[ext_resource type="PackedScene" uid="uid://cr4nfpo7djmeo" path="res://enemy_spawner.tscn" id="6_ko63k"]
+[ext_resource type="PackedScene" uid="uid://l4mo8lp0e35" path="res://player/Player.tscn" id="3_qmfbw"]
+[ext_resource type="PackedScene" uid="uid://txi1f5gyipgi" path="res://player/particles.tscn" id="4_stwcs"]
+[ext_resource type="PackedScene" uid="uid://dr33mi5ekcgu" path="res://enemy/enemy.tscn" id="5_qmfbw"]
+[ext_resource type="PackedScene" uid="uid://cr4nfpo7djmeo" path="res://enemy/enemy_spawner.tscn" id="6_ko63k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ko63k"]
 texture = ExtResource("1_cbyl2")

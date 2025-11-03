@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dn704rwawcmft"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_4ufab"]
-[ext_resource type="Script" uid="uid://dnnftpoi3kdnm" path="res://enemy_types/rigid_body_2d.gd" id="2_o4aam"]
+[ext_resource type="Script" uid="uid://dnnftpoi3kdnm" path="res://rigid_body_2d.gd" id="2_o4aam"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4ufab"]
 

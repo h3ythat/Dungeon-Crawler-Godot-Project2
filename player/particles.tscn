@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://txi1f5gyipgi"]
 
-[ext_resource type="Script" uid="uid://1ymkb74kmv1e" path="res://particles.gd" id="1_xnif8"]
+[ext_resource type="Script" uid="uid://1ymkb74kmv1e" path="res://player/player_scripts/particles.gd" id="1_xnif8"]
 [ext_resource type="Curve" uid="uid://b24tmog2s8jp3" path="res://weapon_curve.tres" id="2_1nvrg"]
 [ext_resource type="Texture2D" uid="uid://dtrm166xhy12s" path="res://image-removebg-preview (12).png" id="3_i1ypt"]
 [ext_resource type="Gradient" uid="uid://c5oj3243ynl0c" path="res://red_grad.tres" id="5_0756t"]

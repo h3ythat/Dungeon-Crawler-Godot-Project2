@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://c3yj13xhqgwjt"]
+
+[ext_resource type="Script" uid="uid://cjfrp5rbjjp6j" path="res://enemy/scripts/ENEMY_resource.gd" id="1_kyfu1"]
+[ext_resource type="Texture2D" uid="uid://kqarthpv6b7f" path="res://dash_type_enem.png" id="2_scfxb"]
+
+[resource]
+script = ExtResource("1_kyfu1")
+health = 100.0
+speed = 100.0
+sprite_texture = ExtResource("2_scfxb")
+enemy_type = 1
+metadata/_custom_type_script = "uid://cjfrp5rbjjp6j"

@@ -18,7 +18,7 @@ func _ready():
 func _process(delta):
 	pass
 func enemySpawn():
-	var newEnemy = load("res://enemy.tscn").instantiate()
+	var newEnemy = load("res://enemy/enemy.tscn").instantiate()
 	
 	
 	newEnemy.global_position = spawnPositions.pick_random().global_position

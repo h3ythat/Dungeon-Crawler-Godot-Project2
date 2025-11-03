@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=2 format=3 uid="uid://jc14mupvn8qe"]
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://jc14mupvn8qe"]
 
-[ext_resource type="Script" uid="uid://cjfrp5rbjjp6j" path="res://ENEMY_resource.gd" id="1_6phyf"]
+[ext_resource type="Script" uid="uid://cjfrp5rbjjp6j" path="res://enemy/scripts/ENEMY_resource.gd" id="1_vwqlb"]
+[ext_resource type="Texture2D" uid="uid://rwx1sgdk6j4o" path="res://evil.png" id="2_08gge"]
 
 [resource]
-script = ExtResource("1_6phyf")
+script = ExtResource("1_vwqlb")
 health = 100.0
 speed = 100.0
+sprite_texture = ExtResource("2_08gge")
 metadata/_custom_type_script = "uid://cjfrp5rbjjp6j"
