@@ -12,6 +12,17 @@ signal weapon_charged
 @onready var sword_audiostream = $sword_sfx
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	player = $"../Player/CharacterBody2D/Node2D"
+	if(player):
+		player.line1pos.connect(self.line1maker)
+		player.line2pos.connect(self.line2maker)
+		player.SLASH.connect(self.slash)
+		player.done_slash.connect(self.dslash)
+		player.attack_not_detected.connect(self.no_attack_input)
+		player.attack_detected.connect(self.attack_input)
+		player.slash_sfx_sig.connect(self.swoosh_sfx)
+func reconnect():
 	player = $"../Player/CharacterBody2D/Node2D"
 	player.line1pos.connect(self.line1maker)
 	player.line2pos.connect(self.line2maker)
@@ -20,7 +31,7 @@ func _ready():
 	player.attack_not_detected.connect(self.no_attack_input)
 	player.attack_detected.connect(self.attack_input)
 	player.slash_sfx_sig.connect(self.swoosh_sfx)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previous frame
 func _process(delta):
 	if(player != null):
 		position = player.position

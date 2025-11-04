@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomType" load_steps=2 format=3 uid="uid://cuaedmnwrgsk6"]
+
+[ext_resource type="Script" uid="uid://bsrtrm3d55f0w" path="res://rooms/roomResource.gd" id="1_h1n8t"]
+
+[resource]
+script = ExtResource("1_h1n8t")
+tile_room_above = Vector2(5, -13)
+tile_room_below = Vector2(5, 7)
+tile_room_left = Vector2(-6, -3)
+tile_room_right = Vector2(16, -3)
+metadata/_custom_type_script = "uid://bsrtrm3d55f0w"

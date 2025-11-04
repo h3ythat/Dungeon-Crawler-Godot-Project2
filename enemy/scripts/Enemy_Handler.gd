@@ -47,7 +47,26 @@ func _ready():
 		$"CharacterBody2D/Sprite2D".set_texture(stats.sprite_texture)
 	target = get_tree().current_scene.get_node("Player/CharacterBody2D")
 	call_deferred("path_finding_setup")
-
+func reready():
+	Player = get_tree().current_scene.get_node("Player")
+	enemyClass = stats.enemy_type
+	if(enemyClass == EnemyType.EnemyClass.DASH):
+		var indicator_preload: Node2D = load("res://enemy/dash_look_at.tscn").instantiate()
+		$CharacterBody2D.add_child(indicator_preload)
+		proximity_indicator = get_node("CharacterBody2D/dash_indicator")
+		
+		if(get_node("Dash_timer") == null):
+			var temp_dash_timer = Timer.new()
+			temp_dash_timer.set_name("Dash_timer")
+			add_child(temp_dash_timer)
+			dash_timer = get_node("Dash_timer")
+			dash_time_active = true
+			
+	
+	if stats.sprite_texture != null:
+		$"CharacterBody2D/Sprite2D".set_texture(stats.sprite_texture)
+	target = get_tree().current_scene.get_node("Player/CharacterBody2D")
+	call_deferred("path_finding_setup")
 func path_finding_setup():
 	await get_tree().physics_frame
 	if target:
@@ -86,7 +105,7 @@ func _process(delta):
 	
 	if(health <= 0):
 		var particleEffect: Node2D = load("res://enemy/confetti.tscn").instantiate()
-		particleEffect.global_position = global_position
+		particleEffect.global_position = $CharacterBody2D.global_position
 		self.add_sibling(particleEffect) 
 		emit_signal("enemyDeprecated")
 		queue_free()
@@ -123,30 +142,31 @@ func _on_navigation_agent_2d_target_reached():
 
 
 func customEnemyClassBehaviour():
-	if(enemyClass == EnemyType.EnemyClass.DASH && proximity_indicator != null):
-		proximity_indicator.look_at(target.global_position)
-	if(enemyClass == EnemyType.EnemyClass.DASH && get_node("Dash_timer") != null):
-		
-		if(dash_time_active):
-			dash_time_active = false
-			dash_timer.set_wait_time(rng.randf_range(5, 10.0))
-			dash_timer.start()
-			await dash_timer.timeout
-			print("dash complete ")
+	if(target != null):
+		if(enemyClass == EnemyType.EnemyClass.DASH && proximity_indicator != null):
+			proximity_indicator.look_at(target.global_position)
+		if(enemyClass == EnemyType.EnemyClass.DASH && get_node("Dash_timer") != null):
 			
-			if($CharacterBody2D.global_position.distance_to(target.global_position) <= 300):
-				print("dash possible")
+			if(dash_time_active):
+				dash_time_active = false
+				dash_timer.set_wait_time(rng.randf_range(5, 10.0))
+				dash_timer.start()
+				await dash_timer.timeout
+				print("dash complete ")
 				
-				proximity_indicator.set_modulate(Color(0.248, 0.884, 0.138, 1.0))
-				print($CharacterBody2D.global_position.distance_to(target.global_position))
-				follow_active = false
-				$CharacterBody2D.velocity = Vector2.ZERO
-				var new_target_pos = target.global_position
-				await get_tree().create_timer(2).timeout
-				var dir = ((target.global_position - $CharacterBody2D.global_position).normalized())
-				$CharacterBody2D.velocity += dir * 500
-				await get_tree().create_timer(.5).timeout
-				follow_active = true
-			dash_time_active = true
+				if($CharacterBody2D.global_position.distance_to(target.global_position) <= 300):
+					print("dash possible")
+					
+					proximity_indicator.set_modulate(Color(0.248, 0.884, 0.138, 1.0))
+					print($CharacterBody2D.global_position.distance_to(target.global_position))
+					follow_active = false
+					$CharacterBody2D.velocity = Vector2.ZERO
+					var new_target_pos = target.global_position
+					await get_tree().create_timer(2).timeout
+					var dir = ((target.global_position - $CharacterBody2D.global_position).normalized())
+					$CharacterBody2D.velocity += dir * 500
+					await get_tree().create_timer(.5).timeout
+					follow_active = true
+				dash_time_active = true
 		
 			

@@ -6,6 +6,7 @@
 [ext_resource type="Gradient" uid="uid://c5oj3243ynl0c" path="res://red_grad.tres" id="5_0756t"]
 
 [node name="particles" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_xnif8")
 
 [node name="Line1" type="Line2D" parent="."]
