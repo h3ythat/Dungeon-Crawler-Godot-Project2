@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dl0ew0lw0i2f8" path="res://boost_indicator.png" id="1_if3ee"]
 
 [node name="dash_indicator" type="Node2D"]
+visible = false
 
 [node name="dash_indicator" type="Sprite2D" parent="."]
 texture_filter = 1
