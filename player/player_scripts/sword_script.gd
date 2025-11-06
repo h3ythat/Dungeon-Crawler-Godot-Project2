@@ -71,9 +71,9 @@ func _process(delta):
 				print(new_rotat)
 			if(rotation_speed > 0.05):
 				slash_sfx_sig.emit()
-			if(current_rotat < new_rotat):
+			if(new_rotat != null && current_rotat < new_rotat):
 				rotate(rotation_speed)
-			if(current_rotat >= new_rotat):
+			if(new_rotat != null && current_rotat >= new_rotat):
 				done_slash.emit(rotation_speed)
 				rotation_speed = 0.05
 				

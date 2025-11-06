@@ -26,7 +26,7 @@ size = Vector2(255, 35.238667)
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["Player"]]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["Player"]]
 scale = Vector2(0.4, 0.4)

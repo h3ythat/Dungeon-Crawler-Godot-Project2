@@ -1,16 +1,19 @@
-[gd_scene load_steps=15 format=4 uid="uid://duy061q1tttin"]
+[gd_scene load_steps=18 format=4]
 
-[ext_resource type="Script" uid="uid://dc12lnclogp08" path="res://rooms/roomHandler.gd" id="1_oxhpf"]
-[ext_resource type="Resource" uid="uid://diyygnre0eb5q" path="res://rooms/scene_prototype.tres" id="2_lqqdy"]
-[ext_resource type="Texture2D" uid="uid://657vjq5n6pce" path="res://2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="3_uyd1l"]
-[ext_resource type="Texture2D" uid="uid://v70g1qkyq3yb" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="4_85md3"]
-[ext_resource type="Texture2D" uid="uid://p0klv5uusmfq" path="res://rock.png" id="5_oxhpf"]
-[ext_resource type="PackedScene" uid="uid://txi1f5gyipgi" path="res://player/particles.tscn" id="5_qra6p"]
-[ext_resource type="PackedScene" uid="uid://dr33mi5ekcgu" path="res://enemy/enemy.tscn" id="7_8quh7"]
-[ext_resource type="PackedScene" uid="uid://cr4nfpo7djmeo" path="res://enemy/enemy_spawner.tscn" id="8_tpukn"]
+[ext_resource type="Script" path="res://rooms/roomHandler.gd" id="1_hbxnv"]
+[ext_resource type="Resource" path="res://rooms/scene_prototype.tres" id="2_wvxfd"]
+[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="3_hh5gs"]
+[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="4_gahyv"]
+[ext_resource type="Texture2D" path="res://rock.png" id="5_4bjo3"]
+[ext_resource type="PackedScene" path="res://player/particles.tscn" id="6_t8nxh"]
+[ext_resource type="Script" path="res://player/player_scripts/particles.gd" id="7_sgyru"]
+[ext_resource type="PackedScene" path="res://enemy/enemy_spawner.tscn" id="8_kmcr1"]
+[ext_resource type="Script" path="res://enemy/scripts/enemy_spawner.gd" id="9_1e87g"]
+[ext_resource type="PackedScene" path="res://rooms/door_area.tscn" id="10_p06oi"]
+[ext_resource type="Script" path="res://rooms/door_area.gd" id="11_428jl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oxhpf"]
-texture = ExtResource("3_uyd1l")
+texture = ExtResource("3_hh5gs")
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
@@ -167,7 +170,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, 8, 8, 8, 8, -8, -8,
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqqdy"]
-texture = ExtResource("4_85md3")
+texture = ExtResource("4_gahyv")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -318,7 +321,7 @@ texture = ExtResource("4_85md3")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyd1l"]
-texture = ExtResource("5_oxhpf")
+texture = ExtResource("5_4bjo3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -332,9 +335,36 @@ sources/1 = SubResource("TileSetAtlasSource_lqqdy")
 sources/3 = SubResource("TileSetAtlasSource_uyd1l")
 
 [node name="Scene prototype" type="Node2D" node_paths=PackedStringArray("tileMap")]
-script = ExtResource("1_oxhpf")
-roomResource = ExtResource("2_lqqdy")
+script = ExtResource("1_hbxnv")
+player_spawn_pos = "right"
+roomResource = ExtResource("2_wvxfd")
+room_above = "res://rooms/CROSSROADS.tscn"
+room_below = "res://rooms/CROSSROADS.tscn"
+room_left = "res://rooms/CROSSROADS.tscn"
+room_right = "res://rooms/CROSSROADS.tscn"
+tile_room_above = Vector2(5, -8)
+tile_room_below = Vector2(5, 2)
+tile_room_left = Vector2(-6, -3)
+tile_room_right = Vector2(12, -3)
+tiles_list = [Vector2(5, -8), Vector2(5, 2), Vector2(-6, -3), Vector2(12, -3)]
 tileMap = NodePath("TileMapLayer")
+rooms_list = [{
+&"room_coords": Vector2(5, -8),
+&"room_path": "res://rooms/CROSSROADS.tscn",
+&"side": "top"
+}, {
+&"room_coords": Vector2(5, 2),
+&"room_path": "res://rooms/CROSSROADS.tscn",
+&"side": "bottom"
+}, {
+&"room_coords": Vector2(-6, -3),
+&"room_path": "res://rooms/CROSSROADS.tscn",
+&"side": "left"
+}, {
+&"room_coords": Vector2(12, -3),
+&"room_path": "res://rooms/CROSSROADS.tscn",
+&"side": "right"
+}]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -10
@@ -351,16 +381,15 @@ tile_map_data = PackedByteArray("AAD1//b/AQAIAAcAAAD1//f/AQAIAAcAAAD1//j/AQAIAAc
 tile_set = SubResource("TileSet_r0bij")
 y_sort_origin = -1
 
-[node name="particles" parent="." instance=ExtResource("5_qra6p")]
+[node name="particles" type="Node2D" parent="." instance=ExtResource("6_t8nxh")]
+script = ExtResource("7_sgyru")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.3
 blend_mode = 1
 
-[node name="Enemy" parent="." instance=ExtResource("7_8quh7")]
-position = Vector2(329, -179)
-
-[node name="enemySpawner" parent="." node_paths=PackedStringArray("spawnPositions") instance=ExtResource("8_tpukn")]
+[node name="enemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions") instance=ExtResource("8_kmcr1")]
+script = ExtResource("9_1e87g")
 spawnPositions = [NodePath("../Spawn_Positions/SpawnPos1"), NodePath("../Spawn_Positions/SpawnPos2"), NodePath("../Spawn_Positions/SpawnPos3"), NodePath("../Spawn_Positions/SpawnPos4"), NodePath("../Spawn_Positions/SpawnPos5")]
 inf_debug_mode = false
 
@@ -383,5 +412,37 @@ position = Vector2(329, -157)
 
 [node name="PlayerSpawnPos" type="Node2D" parent="."]
 position = Vector2(390, -176)
+
+[node name="@Node2D@2" type="Node2D" parent="." instance=ExtResource("6_t8nxh")]
+process_mode = 4
+script = ExtResource("7_sgyru")
+
+[node name="Door" type="Node2D" parent="." instance=ExtResource("10_p06oi")]
+position = Vector2(352.08374, -478.51718)
+script = ExtResource("11_428jl")
+scene_to_load = "res://rooms/CROSSROADS.tscn"
+side = "top"
+
+[node name="@Node2D@8" type="Node2D" parent="." instance=ExtResource("10_p06oi")]
+position = Vector2(352.08374, 159.50574)
+script = ExtResource("11_428jl")
+scene_to_load = "res://rooms/CROSSROADS.tscn"
+side = "bottom"
+
+[node name="@Node2D@9" type="Node2D" parent="." instance=ExtResource("10_p06oi")]
+position = Vector2(-352.08374, -159.50574)
+script = ExtResource("11_428jl")
+scene_to_load = "res://rooms/CROSSROADS.tscn"
+side = "left"
+
+[node name="@Node2D@10" type="Node2D" parent="." instance=ExtResource("10_p06oi")]
+position = Vector2(800.19037, -159.50574)
+script = ExtResource("11_428jl")
+scene_to_load = "res://rooms/CROSSROADS.tscn"
+side = "right"
+
+[node name="@Node2D@182" type="Node2D" parent="." instance=ExtResource("6_t8nxh")]
+process_mode = 4
+script = ExtResource("7_sgyru")
 
 [connection signal="enemies_defeated" from="enemySpawner" to="." method="_on_enemy_spawner_enemies_defeated"]

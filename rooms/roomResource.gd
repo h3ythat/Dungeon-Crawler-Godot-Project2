@@ -1,7 +1,7 @@
 class_name RoomType
 extends Resource
 
-enum RoomTypes { CROSSROADS, scene_prototype }
+enum RoomTypes { CROSSROADS }
 @export var current_room_type: RoomTypes
 
 @export_category("Adjacent Rooms")

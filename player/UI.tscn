@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2roflkx7wabn"]
+[gd_scene load_steps=4 format=3 uid="uid://b2roflkx7wabn"]
 
 [ext_resource type="Texture2D" uid="uid://1n1juem4knu7" path="res://2D Pixel Dungeon Asset Pack/heart.png" id="1_b3bc3"]
+[ext_resource type="Theme" uid="uid://bkcm5fi54gyr8" path="res://panel.tres" id="2_x5gix"]
+[ext_resource type="Script" uid="uid://b2wbcbvtinswm" path="res://player/map_renderer.gd" id="4_cr724"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,11 +15,11 @@ size_flags_vertical = 4
 [node name="Health Container" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 837.99994
-offset_top = 470.0
-offset_right = 837.99994
-offset_bottom = 470.0
-scale = Vector2(0.4358333, 0.4358333)
+offset_left = 691.9999
+offset_top = 384.0
+offset_right = 691.9999
+offset_bottom = 384.0
+scale = Vector2(0.36744484, 0.36744484)
 pivot_offset = Vector2(19, 19)
 metadata/_edit_use_anchors_ = true
 
@@ -47,3 +49,121 @@ texture_filter = 1
 position = Vector2(-1198.1163, -911.1394)
 scale = Vector2(0.6000001, 0.6000001)
 texture = ExtResource("1_b3bc3")
+
+[node name="Map Contained" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Map Contained" node_paths=PackedStringArray("map_pos")]
+layout_mode = 0
+offset_left = 872.7963
+offset_top = -54.20367
+offset_right = 1216.7964
+offset_bottom = 289.79633
+scale = Vector2(0.58202773, 0.58202773)
+pivot_offset = Vector2(156, 156)
+theme = ExtResource("2_x5gix")
+script = ExtResource("4_cr724")
+map_pos = [NodePath("../Pos1"), NodePath("../Pos2"), NodePath("../Pos3"), NodePath("../Pos4"), NodePath("../Pos5"), NodePath("../Pos6"), NodePath("../Pos7"), NodePath("../Pos8"), NodePath("../Pos9"), NodePath("../Pos10"), NodePath("../Pos11"), NodePath("../Pos12"), NodePath("../Pos13"), NodePath("../Pos14"), NodePath("../Pos15"), NodePath("../Pos16"), NodePath("../Pos17"), NodePath("../Pos18"), NodePath("../Pos19"), NodePath("../Pos20"), NodePath("../Pos21"), NodePath("../Pos22"), NodePath("../Pos23"), NodePath("../Pos24"), NodePath("../Pos25")]
+
+[node name="Pos1" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(963.6, 36.6)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos2" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1000.6249, 36.6)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos3" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1037.6249, 36.6)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos4" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1074.6249, 36.6)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos5" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1112.0001, 36.6)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos6" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(963.6, 73.625)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos7" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1000.6249, 73.625)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos8" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1037.6249, 73.625)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos9" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1074.6249, 73.625)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos10" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1112.0001, 73.625)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos11" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(963.6, 110.65)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos12" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1000.6249, 110.65)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos13" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1037.6249, 110.65)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos14" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1074.6249, 110.65)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos15" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1112.0001, 110.65)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos16" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(963.6, 147.675)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos17" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1000.6249, 147.675)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos18" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1037.6249, 147.675)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos19" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1074.6249, 147.675)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos20" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1112.0001, 147.675)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos21" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(963.6, 184.7)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos22" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1000.6249, 184.7)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos23" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1037.6249, 184.7)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos24" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1074.6249, 184.7)
+scale = Vector2(2.328111, 2.328111)
+
+[node name="Pos25" type="Node2D" parent="CanvasLayer/Map Contained"]
+position = Vector2(1112.0001, 184.7)
+scale = Vector2(2.328111, 2.328111)

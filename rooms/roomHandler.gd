@@ -15,6 +15,7 @@ class_name RoomHandler
 @export var tile_room_left: Vector2
 @export var tile_room_right: Vector2
 @export var tiles_list: Array
+@export var spawn_distance: int = 75
 @export_category("Room_Tilemap")
 @export var tileMap: TileMapLayer
 @export_category("Room Dictonary")
@@ -23,6 +24,7 @@ class_name RoomHandler
 @onready var enemiesFound: Array = get_tree().get_nodes_in_group("EnemyHandler")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	
 	room_above = ("res://rooms/"+ roomResource.RoomTypes.keys()[randi() % roomResource.RoomTypes.size()]+".tscn")
 	room_below = ("res://rooms/"+ roomResource.RoomTypes.keys()[randi() % roomResource.RoomTypes.size()]+".tscn")
@@ -61,32 +63,57 @@ func _ready():
 	rooms_list = [room_up,room_down,room_l,room_r]
 	
 	
-	if(get_node("Player") != null):
-		player_loaded = true
-		for i in enemiesFound:
-			i.set_process_mode(Node.PROCESS_MODE_INHERIT)
+	
 			
-	else:
+	
 		
-		var temp_player: Node2D = load("res://player/Player.tscn").instantiate()
-		temp_player.set_process_mode(Node.PROCESS_MODE_DISABLED)
-		player_spawn_pos = Globals.spawn_side
-		match player_spawn_pos:
-			'top': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_up.room_coords))
-			'bottom': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_down.room_coords))
-			'left': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_l.room_coords))
-			'right': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_r.room_coords))
-		var temp_particles = load("res://player/particles.tscn").instantiate()
-		temp_particles.set_process_mode(Node.PROCESS_MODE_DISABLED)
-		add_child(temp_particles)
-		add_child(temp_player)
+	
+	var temp_player: Node2D = load("res://player/Player.tscn").instantiate()
+	if(!Globals.originLoaded):
+		Globals.origin(Vector2.ZERO)
+	Globals.map_room_coord_dic[str(Globals.current_coords)] = 'a'
+	temp_player.set_process_mode(Node.PROCESS_MODE_DISABLED)
+	player_spawn_pos = Globals.spawn_side
+	
 		
-		get_node("Player").set_process_mode(Node.PROCESS_MODE_INHERIT)
-		get_node("particles").set_process_mode(Node.PROCESS_MODE_INHERIT)
-		get_node("particles").reconnect()
-		for i in enemiesFound:
-			i.set_process_mode(Node.PROCESS_MODE_INHERIT)
-			i.reready()
+	match player_spawn_pos:
+		'': temp_player.global_position = get_tree().current_scene.get_node("PlayerSpawnPos").global_position
+		'top': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_up.room_coords))
+		
+		'bottom': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_down.room_coords))
+		
+		'left': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_l.room_coords))
+		
+		'right': temp_player.global_position = tileMap.to_global(tileMap.map_to_local(room_r.room_coords))
+		
+		
+	
+	
+	match player_spawn_pos:
+		'top': temp_player.global_position.y += spawn_distance
+		
+		'bottom': temp_player.global_position.y -= spawn_distance
+		
+		'left': temp_player.global_position.x += spawn_distance
+		
+		'right': temp_player.global_position.x -= spawn_distance
+		
+	#match player_spawn_pos:
+		#'top': Globals.origin(Vector2(Globals.current_coords.x,Globals.current_coords.y-1))
+		#'bottom': Globals.origin(Vector2(Globals.current_coords.x,Globals.current_coords.y+1))
+		#'left': Globals.origin(Vector2(Globals.current_coords.x+1,Globals.current_coords.y))
+		#'right': Globals.origin(Vector2(Globals.current_coords.x-1,Globals.current_coords.y))
+	var temp_particles = load("res://player/particles.tscn").instantiate()
+	temp_particles.set_process_mode(Node.PROCESS_MODE_DISABLED)
+	add_child(temp_particles)
+	add_child(temp_player)
+	
+	get_node("Player").set_process_mode(Node.PROCESS_MODE_INHERIT)
+	get_node("particles").set_process_mode(Node.PROCESS_MODE_INHERIT)
+	get_node("particles").reconnect()
+	for i in enemiesFound:
+		i.set_process_mode(Node.PROCESS_MODE_INHERIT)
+		i.reready()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

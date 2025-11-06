@@ -21,6 +21,8 @@ func dash_sfx():
 	
 func _physics_process(delta):
 	var playerMovementInput = get_input()
+	if(Input.is_action_just_pressed("debug")):
+		get_tree().current_scene.add_child(load("res://pacton.tscn").instantiate())
 	if(Input.is_action_pressed("dash") && ability_to_roll):
 		dash_sfx()
 		$Control/TextureProgressBar.set_self_modulate(Color(1, 1, 1, 1))

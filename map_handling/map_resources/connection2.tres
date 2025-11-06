@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapIcon" load_steps=2 format=3 uid="uid://cp76uen8g625r"]
+
+[ext_resource type="Script" uid="uid://bba1pvo4jq0pm" path="res://map_handling/map_icon_resource.gd" id="1_h2yml"]
+
+[resource]
+script = ExtResource("1_h2yml")
+connection = 3
+icon_type = 3
+metadata/_custom_type_script = "uid://bba1pvo4jq0pm"

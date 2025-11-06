@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MapIcon" load_steps=2 format=3 uid="uid://bybai6y1que8f"]
+
+[ext_resource type="Script" uid="uid://bba1pvo4jq0pm" path="res://map_handling/map_icon_resource.gd" id="1_guevn"]
+
+[resource]
+script = ExtResource("1_guevn")
+connection = 4
+icon_type = 3
+metadata/_custom_type_script = "uid://bba1pvo4jq0pm"

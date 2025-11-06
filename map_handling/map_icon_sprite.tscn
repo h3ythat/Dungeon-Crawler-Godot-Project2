@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://dsbxdl87cdsjf"]
+
+[ext_resource type="Texture2D" uid="uid://blu0c0mnyer50" path="res://map_handling/map_sprites.png" id="1_si0pk"]
+[ext_resource type="Script" uid="uid://cbdcrh8v87sdf" path="res://map_handling/map_icon.gd" id="2_emlwb"]
+[ext_resource type="Resource" uid="uid://bjm7keenbqsdh" path="res://map_handling/map_resources/unloaded.tres" id="3_ddnss"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8uv1"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76a72"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydjyp"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up1d6"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppuop"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey05a"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6n1x"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lpc3"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up3cu"]
+atlas = ExtResource("1_si0pk")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8wwc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8uv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76a72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydjyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up1d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppuop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey05a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6n1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lpc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up3cu")
+}],
+"loop": true,
+"name": &"map_sprites",
+"speed": 0.0
+}]
+
+[node name="map_icon_sprite" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(963.6, 36.6)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8wwc3")
+animation = &"map_sprites"
+script = ExtResource("2_emlwb")
+mapIconResource = ExtResource("3_ddnss")
