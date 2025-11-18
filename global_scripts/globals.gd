@@ -6,6 +6,8 @@ extends Node
 @export var current_coords: Vector2 = Vector2.ZERO
 @export var saved_scene_count: int = 0
 @export var originLoaded: bool = false
+
+@export var player: Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -13,7 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if(get_tree().current_scene != null):
+		player = get_tree().current_scene.get_node("Player")
 func save_scene():
 	if(starting_scene == null):
 		var scene = PackedScene.new()

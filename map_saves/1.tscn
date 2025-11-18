@@ -1,21 +1,19 @@
-[gd_scene load_steps=25 format=4]
+[gd_scene load_steps=18 format=4]
 
-[ext_resource type="Script" path="res://rooms/roomHandler.gd" id="1_epgtp"]
-[ext_resource type="Resource" path="res://rooms/scene_prototype.tres" id="2_1x5rk"]
-[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="3_ih2e6"]
-[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="4_84sb3"]
-[ext_resource type="Texture2D" path="res://rock.png" id="5_pqexp"]
-[ext_resource type="PackedScene" path="res://player/particles.tscn" id="6_ptpxi"]
-[ext_resource type="Script" path="res://player/player_scripts/particles.gd" id="7_fc4r1"]
-[ext_resource type="PackedScene" path="res://enemy/confetti.tscn" id="8_56kqo"]
-[ext_resource type="Script" path="res://enemy/scripts/confetti.gd" id="9_7svtg"]
-[ext_resource type="PackedScene" path="res://enemy/enemy_spawner.tscn" id="10_614j5"]
-[ext_resource type="Script" path="res://enemy/scripts/enemy_spawner.gd" id="11_oti1l"]
-[ext_resource type="PackedScene" path="res://rooms/door_area.tscn" id="12_djau1"]
-[ext_resource type="Script" path="res://rooms/door_area.gd" id="13_gof5d"]
+[ext_resource type="Script" path="res://rooms/roomHandler.gd" id="1_kraox"]
+[ext_resource type="Resource" path="res://rooms/scene_prototype.tres" id="2_1rlep"]
+[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/demonstration.png" id="3_epgtp"]
+[ext_resource type="Texture2D" path="res://2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="4_1x5rk"]
+[ext_resource type="Texture2D" path="res://rock.png" id="5_ih2e6"]
+[ext_resource type="PackedScene" path="res://player/particles.tscn" id="6_84sb3"]
+[ext_resource type="Script" path="res://player/player_scripts/particles.gd" id="7_pqexp"]
+[ext_resource type="PackedScene" path="res://enemy/enemy_spawner.tscn" id="8_ptpxi"]
+[ext_resource type="Script" path="res://enemy/scripts/enemy_spawner.gd" id="9_fc4r1"]
+[ext_resource type="PackedScene" path="res://rooms/door_area.tscn" id="10_56kqo"]
+[ext_resource type="Script" path="res://rooms/door_area.gd" id="11_7svtg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oxhpf"]
-texture = ExtResource("3_ih2e6")
+texture = ExtResource("3_epgtp")
 2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
@@ -172,7 +170,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, 8, 8, 8, 8, -8, -8,
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqqdy"]
-texture = ExtResource("4_84sb3")
+texture = ExtResource("4_1x5rk")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -323,63 +321,23 @@ texture = ExtResource("4_84sb3")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uyd1l"]
-texture = ExtResource("5_pqexp")
+texture = ExtResource("5_ih2e6")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_r0bij"]
-physics_layer_0/collision_layer = 35
+physics_layer_0/collision_layer = 99
 physics_layer_0/collision_mask = 33
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_oxhpf")
 sources/1 = SubResource("TileSetAtlasSource_lqqdy")
 sources/3 = SubResource("TileSetAtlasSource_uyd1l")
 
-[sub_resource type="Curve" id="Curve_sudau"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.06741583), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_0lbn0"]
-curve = SubResource("Curve_sudau")
-
-[sub_resource type="Curve" id="Curve_xnakt"]
-_limits = [-360.0, 360.0, 0.0, 1.0]
-_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ilyld"]
-curve = SubResource("Curve_xnakt")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_smimb"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(1, 1, 10)
-angle_min = -720.0
-angle_max = 720.0
-angle_curve = SubResource("CurveTexture_ilyld")
-velocity_pivot = Vector3(10, 10, 10)
-direction = Vector3(10, 0, 10)
-spread = 180.0
-flatness = 1.0
-initial_velocity_max = 100.0
-angular_velocity_min = -592.94
-angular_velocity_max = 719.99994
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 9.999997
-linear_accel_max = 99.99999
-radial_accel_min = 34.109997
-radial_accel_max = 99.99999
-scale_max = 3.0
-color = Color(0.32156864, 1, 0.92941177, 1)
-alpha_curve = SubResource("CurveTexture_0lbn0")
-hue_variation_min = -1.0
-hue_variation_max = 0.99999994
-turbulence_noise_speed_random = 2.7
-
 [node name="Scene prototype" type="Node2D" node_paths=PackedStringArray("tileMap")]
-script = ExtResource("1_epgtp")
-roomResource = ExtResource("2_1x5rk")
-room_above = "res://rooms/CROSSROADS.tscn"
+script = ExtResource("1_kraox")
+roomResource = ExtResource("2_1rlep")
+room_above = "res://rooms/SHOP.tscn"
 room_below = "res://rooms/CROSSROADS.tscn"
 room_left = "res://rooms/CROSSROADS.tscn"
 room_right = "res://rooms/CROSSROADS.tscn"
@@ -391,7 +349,7 @@ tiles_list = [Vector2(5, -8), Vector2(5, 2), Vector2(-6, -3), Vector2(12, -3)]
 tileMap = NodePath("TileMapLayer")
 rooms_list = [{
 &"room_coords": Vector2(5, -8),
-&"room_path": "res://rooms/CROSSROADS.tscn",
+&"room_path": "res://rooms/SHOP.tscn",
 &"side": "top"
 }, {
 &"room_coords": Vector2(5, 2),
@@ -422,25 +380,15 @@ tile_map_data = PackedByteArray("AAD1//b/AQAIAAcAAAD1//f/AQAIAAcAAAD1//j/AQAIAAc
 tile_set = SubResource("TileSet_r0bij")
 y_sort_origin = -1
 
-[node name="particles" type="Node2D" parent="." instance=ExtResource("6_ptpxi")]
-script = ExtResource("7_fc4r1")
+[node name="particles" type="Node2D" parent="." instance=ExtResource("6_84sb3")]
+script = ExtResource("7_pqexp")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.3
 blend_mode = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." instance=ExtResource("8_56kqo")]
-position = Vector2(247.51215, -293.31833)
-amount = 100
-sub_emitter = NodePath("GPUParticles2D")
-lifetime = 0.85
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_smimb")
-script = ExtResource("9_7svtg")
-
-[node name="enemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions") instance=ExtResource("10_614j5")]
-script = ExtResource("11_oti1l")
+[node name="enemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPositions") instance=ExtResource("8_ptpxi")]
+script = ExtResource("9_fc4r1")
 spawnPositions = [NodePath("../Spawn_Positions/SpawnPos1"), NodePath("../Spawn_Positions/SpawnPos2"), NodePath("../Spawn_Positions/SpawnPos3"), NodePath("../Spawn_Positions/SpawnPos4"), NodePath("../Spawn_Positions/SpawnPos5")]
 inf_debug_mode = false
 
@@ -464,33 +412,32 @@ position = Vector2(329, -157)
 [node name="PlayerSpawnPos" type="Node2D" parent="."]
 position = Vector2(390, -176)
 
-[node name="@Node2D@2" type="Node2D" parent="." instance=ExtResource("6_ptpxi")]
+[node name="@Node2D@6" type="Node2D" parent="." instance=ExtResource("6_84sb3")]
 process_mode = 4
-script = ExtResource("7_fc4r1")
+script = ExtResource("7_pqexp")
 
-[node name="Door" type="Node2D" parent="." instance=ExtResource("12_djau1")]
+[node name="Door" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(352.08374, -478.51718)
-script = ExtResource("13_gof5d")
-scene_to_load = "res://rooms/CROSSROADS.tscn"
+script = ExtResource("11_7svtg")
+scene_to_load = "res://rooms/SHOP.tscn"
 side = "top"
 
-[node name="@Node2D@8" type="Node2D" parent="." instance=ExtResource("12_djau1")]
+[node name="@Node2D@14" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(352.08374, 159.50574)
-script = ExtResource("13_gof5d")
+script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/CROSSROADS.tscn"
 side = "bottom"
 
-[node name="@Node2D@9" type="Node2D" parent="." instance=ExtResource("12_djau1")]
+[node name="@Node2D@15" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(-352.08374, -159.50574)
-script = ExtResource("13_gof5d")
+script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/CROSSROADS.tscn"
 side = "left"
 
-[node name="@Node2D@10" type="Node2D" parent="." instance=ExtResource("12_djau1")]
+[node name="@Node2D@16" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(800.19037, -159.50574)
-script = ExtResource("13_gof5d")
+script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/CROSSROADS.tscn"
 side = "right"
 
-[connection signal="finished" from="GPUParticles2D" to="GPUParticles2D" method="_on_finished"]
 [connection signal="enemies_defeated" from="enemySpawner" to="." method="_on_enemy_spawner_enemies_defeated"]

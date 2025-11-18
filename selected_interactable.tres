@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://83lgcqnu640y"]
+
+[ext_resource type="Shader" uid="uid://c22rxkevbd4gy" path="res://shaders/object_focus/new_shader.gdshader" id="1_4x8ug"]
+
+[resource]
+shader = ExtResource("1_4x8ug")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 2.0
+shader_parameter/outline_color = Color(0, 0.8666667, 0.74509805, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://l4mo8lp0e35"]
+[gd_scene load_steps=17 format=3 uid="uid://l4mo8lp0e35"]
 
 [ext_resource type="Texture2D" uid="uid://dp22lios3ma36" path="res://icon.svg" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://ukheydspwrxd" path="res://player/player_scripts/sword_script.gd" id="2_dtqjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d4e46teakuer6" path="res://2D Pixel Dungeon Asset Pack/character and tileset/pngtree-black-gradient-radial-gradient-png-image_2274808.jpg" id="4_e80uo"]
 [ext_resource type="PackedScene" uid="uid://b2roflkx7wabn" path="res://player/UI.tscn" id="5_cxr5p"]
 [ext_resource type="Texture2D" uid="uid://c2ufaj6lqsgvq" path="res://File.png" id="6_tdg3f"]
+[ext_resource type="Script" uid="uid://bvw6wc27544pr" path="res://player/item_grabber.gd" id="11_5qrx2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6ohk"]
 atlas = ExtResource("2_hp6x6")
@@ -25,6 +26,9 @@ size = Vector2(255, 35.238667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 58.76
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b32pr"]
+radius = 167.8
 
 [node name="Player" type="Node2D" groups=["Player"]]
 
@@ -142,4 +146,17 @@ target_position = Vector2(0, 204.99998)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
 
+[node name="ItemGrabber" type="Node2D" parent="CharacterBody2D"]
+scale = Vector2(2.4999998, 2.4999998)
+script = ExtResource("11_5qrx2")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D/ItemGrabber"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/ItemGrabber/Area2D"]
+z_index = -9
+shape = SubResource("CircleShape2D_b32pr")
+debug_color = Color(0.8448079, 0.37571412, 0.13425729, 0.41960785)
+
+[connection signal="area_entered" from="CharacterBody2D/Node2D/Left" to="CharacterBody2D/Node2D" method="_on_left_area_entered"]
 [connection signal="body_entered" from="CharacterBody2D/Node2D/Left" to="CharacterBody2D/Node2D" method="_on_left_body_entered"]
+[connection signal="area_entered" from="CharacterBody2D/ItemGrabber/Area2D" to="CharacterBody2D/ItemGrabber" method="_on_area_2d_area_entered"]

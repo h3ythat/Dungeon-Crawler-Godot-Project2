@@ -1,6 +1,11 @@
 extends Node2D
 class_name RoomHandler
 
+var rng = RandomNumberGenerator.new()
+var seed = "haha"
+signal playerCreated
+
+
 @export var player_loaded: bool = false
 @export var player_spawn_pos: String
 @export var roomResource: RoomType
@@ -24,7 +29,32 @@ class_name RoomHandler
 @onready var enemiesFound: Array = get_tree().get_nodes_in_group("EnemyHandler")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.seed = hash(seed)
 	
+	#rock gen
+	if($overlayer != null):
+		for i in $overlayer.get_used_cells_by_id(0, Vector2i(1,0)):
+			var rock_gen = randf_range(0, 1)
+			if(rock_gen <= 0.5):
+				print("rock " + str(i))
+				var tileSet: TileSet = $overlayer.tile_set
+				var tileSource: int = tileSet.get_source_id(2)
+				var chance = randf_range(0, 1)
+				if(chance < 0.02):
+					$overlayer.set_cell(i, 0, Vector2i(0,0), 0)
+					print("rock "+str(chance))
+					$TileMapLayer.set_cell(i, 0, Vector2i(3,8))
+					var area: TileArea = load("res://tile_area.tscn").instantiate()
+					area.tilemap = $overlayer
+					area.tilecoords = i
+					area.type = TileArea.Type.rock
+					area.position = $overlayer.to_global(i)
+					area.global_position = $overlayer.to_global($overlayer.map_to_local(i))
+					add_child(area)
+				else: $overlayer.set_cell(i)
+			else: $overlayer.set_cell(i)
+		
+		
 	
 	room_above = ("res://rooms/"+ roomResource.RoomTypes.keys()[randi() % roomResource.RoomTypes.size()]+".tscn")
 	room_below = ("res://rooms/"+ roomResource.RoomTypes.keys()[randi() % roomResource.RoomTypes.size()]+".tscn")
@@ -107,6 +137,7 @@ func _ready():
 	temp_particles.set_process_mode(Node.PROCESS_MODE_DISABLED)
 	add_child(temp_particles)
 	add_child(temp_player)
+	playerCreated.emit()
 	
 	get_node("Player").set_process_mode(Node.PROCESS_MODE_INHERIT)
 	get_node("particles").set_process_mode(Node.PROCESS_MODE_INHERIT)

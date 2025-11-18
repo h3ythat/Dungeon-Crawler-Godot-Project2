@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dshki0h3m5pv6"]
+
+[ext_resource type="Script" uid="uid://dl7ak1blfe7ld" path="res://shop_item.gd" id="1_d8bsp"]
+[ext_resource type="Texture2D" uid="uid://biah56aryxh1k" path="res://thewhoburgs.png" id="1_glqc6"]
+[ext_resource type="FontFile" uid="uid://b3jwni5so4u8s" path="res://vanilla-pancake.ttf" id="2_wxfep"]
+[ext_resource type="Script" uid="uid://bu8cshx0d8mmu" path="res://rooms/interactable_obj.gd" id="4_v846v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8bsp"]
+bg_color = Color(0.7891351, 0.6885334, 0.2635527, 1)
+shadow_size = 2
+shadow_offset = Vector2(1, 4)
+
+[sub_resource type="Theme" id="Theme_v846v"]
+Panel/styles/panel = SubResource("StyleBoxFlat_d8bsp")
+
+[sub_resource type="Theme" id="Theme_hwc1m"]
+default_font = ExtResource("2_wxfep")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/fonts/normal_font = ExtResource("2_wxfep")
+
+[node name="ShopItem" type="Node2D"]
+script = ExtResource("1_d8bsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_glqc6")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -18.0
+offset_top = 24.0
+offset_right = 22.0
+offset_bottom = 64.0
+scale = Vector2(1, 0.31999892)
+theme = SubResource("Theme_v846v")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -17.0
+offset_top = 25.0
+offset_right = 43.0
+offset_bottom = 45.0
+scale = Vector2(0.64, 0.64)
+theme = SubResource("Theme_hwc1m")
+text = "$10.20"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("cur_sprite") groups=["interactable"]]
+script = ExtResource("4_v846v")
+cur_sprite = NodePath("../Sprite2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-1, -9, -1, -8, -6, -8, -6, -7, -11, -7, -11, -6, -14, -6, -14, -5, -16, -5, -16, -4, -18, -4, -18, -3, -19, -3, -19, -2, -21, -2, -21, -1, -22, -1, -22, 0, -23, 0, -23, 1, -24, 1, -24, 2, -27, 2, -27, 3, -28, 3, -28, 5, -31, 5, -31, 7, -32, 7, -32, 9, -31, 9, -31, 13, -29, 13, -29, 12, -28, 12, -28, 14, -24, 14, -24, 15, -26, 15, -26, 16, -27, 16, -27, 19, -29, 19, -29, 20, -30, 20, -30, 22, -29, 22, -29, 23, -24, 23, -24, 27, -29, 27, -29, 28, -31, 28, -31, 29, -28, 29, -28, 30, -22, 30, -22, 31, -16, 31, -16, 32, 24, 32, 24, 31, 28, 31, 28, 30, 29, 30, 29, 29, 32, 29, 32, 28, 31, 28, 31, 27, 28, 27, 28, 24, 29, 24, 29, 23, 32, 23, 32, 20, 31, 20, 31, 19, 28, 19, 28, 18, 29, 18, 29, 17, 28, 17, 28, 16, 29, 16, 29, 13, 28, 13, 28, 10, 29, 10, 29, 11, 30, 11, 30, 12, 32, 12, 32, 9, 31, 9, 31, 8, 30, 8, 30, 5, 31, 5, 31, 4, 29, 4, 29, 3, 28, 3, 28, 2, 29, 2, 29, 1, 24, 1, 24, -2, 23, -2, 23, -4, 21, -4, 21, -5, 19, -5, 19, -6, 18, -6, 18, -7, 14, -7, 14, -8, 10, -8, 10, -9, 4, -9, 4, -8, 3, -8, 3, -9)

@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2roflkx7wabn"]
+[gd_scene load_steps=8 format=3 uid="uid://b2roflkx7wabn"]
 
 [ext_resource type="Texture2D" uid="uid://1n1juem4knu7" path="res://2D Pixel Dungeon Asset Pack/heart.png" id="1_b3bc3"]
 [ext_resource type="Theme" uid="uid://bkcm5fi54gyr8" path="res://panel.tres" id="2_x5gix"]
 [ext_resource type="Script" uid="uid://b2wbcbvtinswm" path="res://player/map_renderer.gd" id="4_cr724"]
+[ext_resource type="PackedScene" uid="uid://bq5136cn5s07y" path="res://UI/PickUpLog/pickuplogcontainer.tscn" id="4_glr40"]
+[ext_resource type="Script" uid="uid://di3qjq84mrn3p" path="res://player/hint_container.gd" id="5_cr724"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr724"]
+bg_color = Color(0, 0, 0, 0.3529412)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_v8uv1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_cr724")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -167,3 +179,62 @@ scale = Vector2(2.328111, 2.328111)
 [node name="Pos25" type="Node2D" parent="CanvasLayer/Map Contained"]
 position = Vector2(1112.0001, 184.7)
 scale = Vector2(2.328111, 2.328111)
+
+[node name="PickUpContianer" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" parent="CanvasLayer/PickUpContianer" instance=ExtResource("4_glr40")]
+layout_mode = 1
+
+[node name="HintContainer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 704.01843
+offset_top = 396.01855
+offset_right = 744.01843
+offset_bottom = 436.01855
+script = ExtResource("5_cr724")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HintContainer"]
+layout_mode = 0
+offset_left = -258.01843
+offset_top = 74.981445
+offset_right = 41.981567
+offset_bottom = 114.981445
+theme = SubResource("Theme_v8uv1")
+
+[node name="switch_object_target" type="RichTextLabel" parent="CanvasLayer/HintContainer/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 296.98157
+offset_bottom = 40.0
+pivot_offset = Vector2(147.98157, 19.981445)
+text = "To switch object target"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/HintContainer"]
+layout_mode = 0
+offset_left = -258.01843
+offset_top = 130.98145
+offset_right = 41.981567
+offset_bottom = 170.98145
+theme = SubResource("Theme_v8uv1")
+
+[node name="interact" type="RichTextLabel" parent="CanvasLayer/HintContainer/Panel2"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 296.98157
+offset_bottom = 40.0
+pivot_offset = Vector2(147.98157, 19.981445)
+text = "To interact."
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

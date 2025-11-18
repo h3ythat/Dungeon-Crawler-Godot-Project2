@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://gspmpag0td08"]
+
+[ext_resource type="Script" uid="uid://cx2qf611atnpg" path="res://tile_area.gd" id="1_3xxb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2s1s"]
+size = Vector2(16, 16)
+
+[node name="Area2D" type="Area2D" groups=["Tile"]]
+scale = Vector2(4.000952, 3.9876432)
+script = ExtResource("1_3xxb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e2s1s")

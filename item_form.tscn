@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhatd7ij0r7l1"]
+
+[ext_resource type="Script" uid="uid://bq3wat834w3xc" path="res://item_form.gd" id="1_vnrjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u0nr"]
+size = Vector2(60.000008, 42.5)
+
+[node name="ItemForm" type="CharacterBody2D" node_paths=PackedStringArray("itemSprite")]
+scale = Vector2(0.4, 0.4)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_vnrjj")
+itemSprite = NodePath("resourceTexture")
+
+[node name="resourceTexture" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 11
+texture_filter = 1
+position = Vector2(-1.0430812e-06, 1.2500015)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_3u0nr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3u0nr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

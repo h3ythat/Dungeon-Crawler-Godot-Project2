@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq5136cn5s07y"]
+
+[ext_resource type="Script" uid="uid://ck0n4hbohtihy" path="res://UI/PickUpLog/pickuplogcontainer.gd" id="1_vdyna"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow282"]
+bg_color = Color(0.065496564, 5.3207042e-08, 0.002160509, 0.7647059)
+border_width_left = 10
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.12225222, 0.12225226, 0.122252144, 1)
+corner_radius_top_left = 80
+corner_radius_bottom_left = 80
+anti_aliasing_size = 0.01
+
+[sub_resource type="Gradient" id="Gradient_xv3kk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ow282"]
+gradient = SubResource("Gradient_xv3kk")
+
+[sub_resource type="Theme" id="Theme_vdyna"]
+/styles/real_stylebox = SubResource("StyleBoxFlat_ow282")
+Panel/icons/s = SubResource("GradientTexture2D_ow282")
+Panel/styles/panel = SubResource("StyleBoxFlat_ow282")
+
+[sub_resource type="Theme" id="Theme_5oryl"]
+RichTextLabel/font_sizes/bold_font_size = 30
+RichTextLabel/font_sizes/mono_font_size = 30
+RichTextLabel/fonts/normal_font = null
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_right = -28.0
+offset_bottom = -437.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vdyna")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 894.0
+offset_top = 765.0
+offset_right = 1264.0
+offset_bottom = 860.0
+scale = Vector2(0.79580915, 0.71999264)
+pivot_offset = Vector2(369.1176, 47.916748)
+theme = SubResource("Theme_vdyna")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1011, 810)
+
+[node name="Collected" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1042.0
+offset_top = 793.0
+offset_right = 1102.0
+offset_bottom = 833.0
+theme = SubResource("Theme_5oryl")
+theme_override_font_sizes/normal_font_size = 30
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="ItemType" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1103.0
+offset_top = 793.0
+offset_right = 1243.0
+offset_bottom = 833.0
+theme = SubResource("Theme_5oryl")
+theme_override_font_sizes/normal_font_size = 30
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1

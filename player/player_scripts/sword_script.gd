@@ -125,6 +125,7 @@ func awaiting_load():
 
 
 func _on_left_body_entered(body: Node):
+	
 	if(body.is_in_group("Enemy") && rotation_speed > 0.05):
 		$LeftCast/Node2D.position = $LeftCast.target_position
 		print("TEST")
@@ -146,3 +147,8 @@ func _on_right_body_entered(body):
 
 func _on_top_jab_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_left_area_entered(area: TileArea):
+	if(area.is_in_group("Tile")):
+		area.sword_collide()
