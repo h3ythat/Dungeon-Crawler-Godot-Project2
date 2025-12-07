@@ -339,7 +339,7 @@ script = ExtResource("1_kraox")
 roomResource = ExtResource("2_1rlep")
 room_above = "res://rooms/SHOP.tscn"
 room_below = "res://rooms/CROSSROADS.tscn"
-room_left = "res://rooms/CROSSROADS.tscn"
+room_left = "res://rooms/SHOP.tscn"
 room_right = "res://rooms/CROSSROADS.tscn"
 tile_room_above = Vector2(5, -8)
 tile_room_below = Vector2(5, 2)
@@ -357,7 +357,7 @@ rooms_list = [{
 &"side": "bottom"
 }, {
 &"room_coords": Vector2(-6, -3),
-&"room_path": "res://rooms/CROSSROADS.tscn",
+&"room_path": "res://rooms/SHOP.tscn",
 &"side": "left"
 }, {
 &"room_coords": Vector2(12, -3),
@@ -422,19 +422,19 @@ script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/SHOP.tscn"
 side = "top"
 
-[node name="@Node2D@14" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
+[node name="@Node2D@13" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(352.08374, 159.50574)
 script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/CROSSROADS.tscn"
 side = "bottom"
 
-[node name="@Node2D@15" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
+[node name="@Node2D@14" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(-352.08374, -159.50574)
 script = ExtResource("11_7svtg")
-scene_to_load = "res://rooms/CROSSROADS.tscn"
+scene_to_load = "res://rooms/SHOP.tscn"
 side = "left"
 
-[node name="@Node2D@16" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
+[node name="@Node2D@15" type="Node2D" parent="." instance=ExtResource("10_56kqo")]
 position = Vector2(800.19037, -159.50574)
 script = ExtResource("11_7svtg")
 scene_to_load = "res://rooms/CROSSROADS.tscn"

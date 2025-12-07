@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn2qkjbe034r6"]
+
+[ext_resource type="Script" path="res://player/item_type.gd" id="1_6gm04"]
+[ext_resource type="Theme" path="res://UI/InvUI/unselected.tres" id="1_8ibp1"]
+[ext_resource type="Resource" path="res://item_type_resources/rock.tres" id="2_6gm04"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ibp1"]
+resource_local_to_scene = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ibp1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
+[node name="itemType" type="Label" groups=["invUI"]]
+theme = ExtResource("1_8ibp1")
+text = "AAAAAAAA"
+label_settings = SubResource("LabelSettings_8ibp1")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_6gm04")
+itemTyperesource = ExtResource("2_6gm04")
+
+[node name="itemSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(12, 11)
+scale = Vector2(0.495598, 0.495598)
+
+[node name="quantity" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_right = 150.0
+offset_bottom = 26.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ibp1")
+text = "                 x32"
+horizontal_alignment = 2
+vertical_alignment = 1
